@@ -46,7 +46,7 @@ As técnicas e tecnologias utilizadas pra isso são:
 
 - Day 3
 
-![day-three](https://github.com/jonathastassi/devhub_android/blob/main/prints/day_2.png)
+![day-three](https://github.com/jonathastassi/devhub_android/blob/main/prints/day_3.png)
 
 [Você pode conferir o resultado do desafio neste commit](https://github.com/jonathastassi/devhub_android/commit/e2179a0a5ecfb72bd888408ab64b4667f8be4b0f).
 

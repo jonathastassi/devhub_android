@@ -3,7 +3,6 @@ package com.jonathastassi.devhub
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -18,13 +17,15 @@ import androidx.compose.ui.Alignment.Companion.BottomCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.jonathastassi.devhub.ui.theme.DevHubTheme
 
 class MainActivity : ComponentActivity() {
@@ -38,7 +39,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Profile(
-                        photo = painterResource(id = R.drawable.profile),
+                        photoUrl = "https://avatars.githubusercontent.com/u/7793449?v=4",
                         name = "Jonathas Tassi e Silva",
                         user = "jonathastassi",
                         bio = "Software Developer | Flutter | Android | Mobile"
@@ -50,7 +51,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Profile(photo: Painter, name: String, user: String, bio: String) {
+fun Profile(photoUrl: String, name: String, user: String, bio: String) {
     val boxHeight = remember {
         150.dp
     }
@@ -76,8 +77,15 @@ fun Profile(photo: Painter, name: String, user: String, bio: String) {
                 )
                 Spacer(modifier = Modifier.height((imageHeight.value / 2).dp))
             }
-            Image(
-                painter = photo, contentDescription = "Profile image", modifier = Modifier
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(photoUrl)
+                    .crossfade(true)
+                    .build(),
+                placeholder = painterResource(R.drawable.user),
+                contentDescription = "Profile image",
+                modifier = Modifier
+                    .background(color = Color.White, shape = CircleShape,)
                     .clip(
                         CircleShape
                     )
@@ -109,7 +117,7 @@ fun Profile(photo: Painter, name: String, user: String, bio: String) {
 fun DefaultPreview() {
     DevHubTheme {
         Profile(
-            photo = painterResource(id = R.drawable.profile),
+            photoUrl = "https://avatars.githubusercontent.com/u/7793449?v=4",
             name = "Jonathas Tassi e Silva",
             user = "jonathastassi",
             bio = "Software Developer | Flutter | Android | Mobile"

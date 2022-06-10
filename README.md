@@ -12,7 +12,7 @@ App que consulta os dados públicos de usuários do Github, criado durante o #7d
 
 - [x] DIA 2 - Nesse dia, você irá alterar o seu código e implementar um visual mais atraente para apresentar as informações públicas de um perfil do GitHub.
 
-- [ ] DIA 3 - Aqui, você passará a exibir na tela da sua aplicação uma imagem carregada diretamente a partir de uma URL.
+- [x] DIA 3 - Aqui, você passará a exibir na tela da sua aplicação uma imagem carregada diretamente a partir de uma URL.
 
 - [ ] DIA 4 - Chegou a hora de brincar com a API! Nesse dia, você irá finalmente consumir a API do GitHub, buscando as informações de qualquer usuário a partir de seu nome de usuário.
 
@@ -43,6 +43,12 @@ As técnicas e tecnologias utilizadas pra isso são:
 ![day-two](https://github.com/jonathastassi/devhub_android/blob/main/prints/day_2.png)
 
 [Você pode conferir o resultado do desafio neste commit](https://github.com/jonathastassi/devhub_android/commit/58f685604e7633cf69174da3c68eee0828524b51).
+
+- Day 3
+
+![day-three](https://github.com/jonathastassi/devhub_android/blob/main/prints/day_2.png)
+
+[Você pode conferir o resultado do desafio neste commit](https://github.com/jonathastassi/devhub_android/commit/e2179a0a5ecfb72bd888408ab64b4667f8be4b0f).
 
 ## 📁 Acesso ao projeto
 

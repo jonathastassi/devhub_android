@@ -14,7 +14,7 @@ App que consulta os dados públicos de usuários do Github, criado durante o #7d
 
 - [x] DIA 3 - Aqui, você passará a exibir na tela da sua aplicação uma imagem carregada diretamente a partir de uma URL.
 
-- [ ] DIA 4 - Chegou a hora de brincar com a API! Nesse dia, você irá finalmente consumir a API do GitHub, buscando as informações de qualquer usuário a partir de seu nome de usuário.
+- [x] DIA 4 - Chegou a hora de brincar com a API! Nesse dia, você irá finalmente consumir a API do GitHub, buscando as informações de qualquer usuário a partir de seu nome de usuário.
 
 - [ ] DIA 5 - Nesse dia, o seu objetivo será integrar com a tela as informações recebidas a partir da API.
 
@@ -28,6 +28,7 @@ As técnicas e tecnologias utilizadas pra isso são:
 
 - `Jetpack Compose`: Para criação do layout das telas
 - `Coil`: Biblioteca para exibir imagens via URL no Android [Link do Coil](https://coil-kt.github.io/coil/compose/)
+- `Retrofit`: Biblioteca facilitar a realização de chamadas HTTP para API
 
 ## 🎯 Desafio
 
@@ -48,6 +49,13 @@ As técnicas e tecnologias utilizadas pra isso são:
 ![day-three](https://github.com/jonathastassi/devhub_android/blob/main/prints/day_3.png)
 
 [Você pode conferir o resultado do desafio neste commit](https://github.com/jonathastassi/devhub_android/commit/e2179a0a5ecfb72bd888408ab64b4667f8be4b0f).
+
+- Day 4
+
+![day-three](https://github.com/jonathastassi/devhub_android/blob/main/prints/day_3.png)
+
+[Você pode conferir o resultado do desafio neste commit](https://github.com/jonathastassi/devhub_android/commit/638b9c4ecfaa6db691291c8ca16b5af3420cb6a8).
+
 
 ## 📁 Acesso ao projeto
 

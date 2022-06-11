@@ -29,6 +29,7 @@ App que consulta os dados públicos de usuários do Github, criado durante o #7d
 As técnicas e tecnologias utilizadas pra isso são:
 
 - `Jetpack Compose`: Para criação do layout das telas
+- `Coil`: Biblioteca para exibir imagens via URL no Android [Link do Coil](https://coil-kt.github.io/coil/compose/)
 
 ## 🎯 Desafio
 

@@ -1,6 +1,7 @@
 package com.jonathastassi.devhub
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -27,10 +28,26 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.jonathastassi.devhub.ui.theme.DevHubTheme
+import com.jonathastassi.devhub.webclient.RetrofitInit
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val apiService = RetrofitInit().gitHubService
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = apiService.findProfileBy("jonathastassi")
+            Log.i("Github Name", response.name)
+            Log.i("Github Bio", response.bio)
+            Log.i("Github Avatar", response.avatar_url)
+            Log.i("Github Login", response.login)
+        }
+
+
         setContent {
             DevHubTheme {
                 // A surface container using the 'background' color from the theme
@@ -85,7 +102,7 @@ fun Profile(photoUrl: String, name: String, user: String, bio: String) {
                 placeholder = painterResource(R.drawable.user),
                 contentDescription = "Profile image",
                 modifier = Modifier
-                    .background(color = Color.White, shape = CircleShape,)
+                    .background(color = Color.White, shape = CircleShape)
                     .clip(
                         CircleShape
                     )

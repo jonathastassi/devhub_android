@@ -22,8 +22,6 @@ App que consulta os dados públicos de usuários do Github, criado durante o #7d
 
 - [ ] DIA 7 - No sétimo e último dia do desafio, você irá consumir a API novamente para buscar os repositórios do usuário e apresentá-los junto com as informações que você já tinha. Além disso, você também poderá adicionar uma tela de autenticação. Você irá fechar com chave de ouro!
 
-![](img/amostra.gif)
-
 ## ✔️ Técnicas e tecnologias utilizadas
 
 As técnicas e tecnologias utilizadas pra isso são:

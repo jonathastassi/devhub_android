@@ -52,10 +52,15 @@ As técnicas e tecnologias utilizadas pra isso são:
 
 - Day 4
 
-![day-three](https://github.com/jonathastassi/devhub_android/blob/main/prints/day_3.png)
+![day-four](https://github.com/jonathastassi/devhub_android/blob/main/prints/day_3.png)
 
 [Você pode conferir o resultado do desafio neste commit](https://github.com/jonathastassi/devhub_android/commit/638b9c4ecfaa6db691291c8ca16b5af3420cb6a8).
 
+- Day 5
+
+![day-five](https://github.com/jonathastassi/devhub_android/blob/main/prints/day_5.gif)
+
+[Você pode conferir o resultado do desafio neste commit](https://github.com/jonathastassi/devhub_android/commit/3e4e150231603b4e045122f2451daa372f2c2aad).
 
 ## 📁 Acesso ao projeto
 

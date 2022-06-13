@@ -1,6 +1,6 @@
-package com.jonathastassi.devhub.webclient.model
+package com.jonathastassi.devhub.data.models
 
-data class GitHubProfileWeb(
+data class GitHubProfileModel(
     val login: String,
     val avatar_url: String,
     val name: String,

@@ -12,6 +12,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.BottomCenter
@@ -27,26 +29,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.jonathastassi.devhub.data.repositories.GitHubRepository
 import com.jonathastassi.devhub.ui.theme.DevHubTheme
-import com.jonathastassi.devhub.webclient.RetrofitInit
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val apiService = RetrofitInit().gitHubService
-
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = apiService.findProfileBy("jonathastassi")
-            Log.i("Github Name", response.name)
-            Log.i("Github Bio", response.bio)
-            Log.i("Github Avatar", response.avatar_url)
-            Log.i("Github Login", response.login)
-        }
-
 
         setContent {
             DevHubTheme {
@@ -55,11 +43,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Profile(
-                        photoUrl = "https://avatars.githubusercontent.com/u/7793449?v=4",
-                        name = "Jonathas Tassi e Silva",
+                    ProfileScreen(
                         user = "jonathastassi",
-                        bio = "Software Developer | Flutter | Android | Mobile"
+                        gitHubRepository = GitHubRepository()
                     )
                 }
             }
@@ -68,63 +54,72 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Profile(photoUrl: String, name: String, user: String, bio: String) {
-    val boxHeight = remember {
-        150.dp
-    }
-    val imageHeight = remember {
-        (boxHeight.value).dp
-    }
-    Column(
-        modifier = Modifier.background(color = Color.White)
-    ) {
+fun ProfileScreen(user: String, gitHubRepository: GitHubRepository) {
 
-        Box(
-            contentAlignment = BottomCenter
-        ) {
-            Column() {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(boxHeight)
-                        .background(
-                            color = Color.DarkGray,
-                            shape = RoundedCornerShape(0.dp, 0.dp, 18.dp, 18.dp)
-                        )
-                )
-                Spacer(modifier = Modifier.height((imageHeight.value / 2).dp))
+    val foundUser by gitHubRepository.findProfileBy(user).collectAsState(initial = null)
+
+    foundUser?.let {
+        if (it == null) {
+            Text(text = "Dados inválidos", modifier = Modifier.fillMaxWidth())
+        } else {
+            val boxHeight = remember {
+                150.dp
             }
-            AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(photoUrl)
-                    .crossfade(true)
-                    .build(),
-                placeholder = painterResource(R.drawable.user),
-                contentDescription = "Profile image",
-                modifier = Modifier
-                    .background(color = Color.White, shape = CircleShape)
-                    .clip(
-                        CircleShape
+            val imageHeight = remember {
+                (boxHeight.value).dp
+            }
+            Column(
+                modifier = Modifier.background(color = Color.White)
+            ) {
+
+                Box(
+                    contentAlignment = BottomCenter
+                ) {
+                    Column() {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(boxHeight)
+                                .background(
+                                    color = Color.DarkGray,
+                                    shape = RoundedCornerShape(0.dp, 0.dp, 18.dp, 18.dp)
+                                )
+                        )
+                        Spacer(modifier = Modifier.height((imageHeight.value / 2).dp))
+                    }
+                    AsyncImage(
+                        model = ImageRequest.Builder(LocalContext.current)
+                            .data(it.avatar_url)
+                            .crossfade(true)
+                            .build(),
+                        placeholder = painterResource(R.drawable.user),
+                        contentDescription = "Profile image",
+                        modifier = Modifier
+                            .background(color = Color.White, shape = CircleShape)
+                            .clip(
+                                CircleShape
+                            )
+                            .height(imageHeight)
                     )
-                    .height(imageHeight)
-            )
-        }
-        Column(
-            modifier = Modifier
-                .padding(8.dp)
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = name,
-                style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.W500)
-            )
-            Text(
-                text = user,
-                style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.W900)
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = bio)
+                }
+                Column(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = it.name,
+                        style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.W500)
+                    )
+                    Text(
+                        text = user,
+                        style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.W900)
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(text = it.bio ?: "")
+                }
+            }
         }
     }
 }
@@ -133,11 +128,9 @@ fun Profile(photoUrl: String, name: String, user: String, bio: String) {
 @Composable
 fun DefaultPreview() {
     DevHubTheme {
-        Profile(
-            photoUrl = "https://avatars.githubusercontent.com/u/7793449?v=4",
-            name = "Jonathas Tassi e Silva",
+        ProfileScreen(
             user = "jonathastassi",
-            bio = "Software Developer | Flutter | Android | Mobile"
+            gitHubRepository = GitHubRepository()
         )
     }
 }

@@ -16,7 +16,7 @@ App que consulta os dados públicos de usuários do Github, criado durante o #7d
 
 - [x] DIA 4 - Chegou a hora de brincar com a API! Nesse dia, você irá finalmente consumir a API do GitHub, buscando as informações de qualquer usuário a partir de seu nome de usuário.
 
-- [ ] DIA 5 - Nesse dia, o seu objetivo será integrar com a tela as informações recebidas a partir da API.
+- [x] DIA 5 - Nesse dia, o seu objetivo será integrar com a tela as informações recebidas a partir da API.
 
 - [ ] DIA 6 - Hoje, você terá a possibilidade de refatorar o seu código de maneira a torná-lo melhor e mais bem organizado. Você irá separar o que é regra de negócio do que é chamada à API e exibição da tela.
 

@@ -1,6 +1,6 @@
-package com.jonathastassi.devhub.webclient
+package com.jonathastassi.devhub.data
 
-import com.jonathastassi.devhub.webclient.service.GitHubService
+import com.jonathastassi.devhub.data.datasources.GitHubApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -13,5 +13,5 @@ class RetrofitInit {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val gitHubService: GitHubService get() = retrofit.create(GitHubService::class.java)
+    val gitHubApi: GitHubApi get() = retrofit.create(GitHubApi::class.java)
 }
